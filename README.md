@@ -1,0 +1,1 @@
+This work contains a simple portflio busines site where customers can see products and interact with head of business via whatsApp and follow onnthier different platforms by clicking onnthier handldes. 
