@@ -15,11 +15,17 @@
                 <h1>Products &amp; Services</h1>
             </div>
         </div>
-        <nav>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav-panel" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="site-nav" id="mobile-nav-panel" aria-label="Primary navigation">
             <a href="index.html" class="nav-link">Home</a>
             <a href="product.html" class="nav-link active">Products</a>
             <a href="https://wa.me/c/237653823883" class="nav-cta" target="_blank" rel="noopener">WhatsApp</a>
         </nav>
+        <div class="nav-overlay" aria-hidden="true"></div>
     </header>
 
     <main>
@@ -132,6 +138,36 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const siteNav = document.querySelector('.site-nav');
+        const navOverlay = document.querySelector('.nav-overlay');
+
+        if (menuToggle && siteNav && navOverlay) {
+            const closeNav = () => {
+                siteNav.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            menuToggle.addEventListener('click', () => {
+                const isOpen = siteNav.classList.toggle('open');
+                menuToggle.setAttribute('aria-expanded', String(isOpen));
+                navOverlay.classList.toggle('active', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            navOverlay.addEventListener('click', closeNav);
+            siteNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeNav();
+                }
+            });
+        }
+    </script>
 
     <div id="lightbox" class="lightbox" aria-hidden="true">
         <button class="lightbox-close" type="button" aria-label="Close image">×</button>
