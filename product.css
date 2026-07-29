@@ -455,10 +455,28 @@ footer {
     gap: 1rem;
     flex-wrap: wrap;
 }
+
+.footer-left,
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-right {
+    align-items: flex-end;
+}
+
+.footer-note {
+    margin: 0 0 0.4rem;
+    text-align: right;
+}
+
 .social-links {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    justify-content: flex-end;
 }
 .social-link {
     color: #ecfeff;
